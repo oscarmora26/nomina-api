@@ -11,7 +11,7 @@ const auth = async (req: any, res: Response, next: NextFunction) => {
 
         const token = req.headers.authorization.split(" ")[1];
 
-        const decode = jwt.verify(token, SECRET_KEY) as { id: string, rol: string };
+        const decode = jwt.verify(token, SECRET_KEY!) as { id: string, rol: string };
 
         const employee = await Employee.findOne({ _id: decode.id })
 

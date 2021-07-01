@@ -9,13 +9,13 @@ export abstract class BaseRepository<T extends Document> {
         this._entites = entities;
     }
 
-    async getAll (): Promise<T[]> {
+    getAll = async (): Promise<T[]> => {
         return await this._entites.find();
     }
-    async getOne(id: any): Promise<T> {
+    getOne = async (id: any): Promise<T> => {
         return await this._entites.findById(id);
     }
-    async create(doc: T): Promise<any> {
+    create = async (doc: any): Promise<any> => {
         const createdEntity = new this._entites(doc);
         return await createdEntity.save();
     }

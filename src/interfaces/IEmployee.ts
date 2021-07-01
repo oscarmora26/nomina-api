@@ -19,7 +19,7 @@ export interface IEmployee extends Document {
         numberHome: string
     },
     informationBank: {
-        Bank: string,
+        bank: string,
         bankAccountType: string,
         accountNumber: string
     },

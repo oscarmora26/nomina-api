@@ -11,7 +11,7 @@ export class JobController extends BaseController {
         this.repo = <JobRepository>this._repository;
     }
 
-    async getJobByDepartment(req: Request, res: Response) {   
+    getJobByDepartment = async (req: Request, res: Response) => {    
         
         try {
             const departmentList = await this.repo.getJobByDepartment(req.params.id)

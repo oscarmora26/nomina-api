@@ -28,7 +28,7 @@ const nominaSchema: Schema<INomina> = new Schema({
         ars: { type: Number },
         ahorroCoop: { type: Number },
         prestamoCoop: { type: Number },
-        Uniformes: { type: Number },
+        uniformes: { type: Number },
         diasNoLab: { type: Number },
     },
     totalDescuentos: { type: Number },

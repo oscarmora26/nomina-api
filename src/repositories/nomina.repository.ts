@@ -8,22 +8,22 @@ export class NominaRepository {
     constructor() {
     }
 
-    async getAll() {
+    getAll = async () => {
         const nominaList = await Nomina.find();
         return nominaList;
     }
 
-    async getOne(id: string) {
+    getOne = async (id: string) => {
         const nominaList = await Nomina.findById(id);
         return nominaList;
     }
 
-    async getByCompanies(idCompanies: string) {
+    getByCompanies = async (idCompanies: string) => {
         const nominaList = await Nomina.find({ idCompanies })
         return nominaList;
     }
 
-    async generateNomina(idCompanies: string) {
+    generateNomina = async (idCompanies: string) => {
         const date: Date = new Date();
 
         if (date.getDay() >= 1 && date.getDate() < 15) {
@@ -46,7 +46,7 @@ export class NominaRepository {
         }
     }
 
-    async generateFirstQuincena(idCompanies: string) {
+    generateFirstQuincena = async (idCompanies: string) => {
         const session = await mongoose.startSession();
         session.startTransaction();
 
@@ -84,7 +84,7 @@ export class NominaRepository {
         return true;
     }
 
-    async generateSecondQuincena(idCompanies: string) {
+    generateSecondQuincena = async (idCompanies: string) => {
         const session = await mongoose.startSession();
         session.startTransaction();
 
@@ -121,7 +121,7 @@ export class NominaRepository {
         return true;
     }
 
-    async update(idNomina: string, doc: {}) {
+    update = async (idNomina: string, doc: {}) => {
         let nomina = await Nomina.updateOne({ _id: idNomina }, { $set: doc });
 
         for (const key in doc) {
@@ -132,7 +132,7 @@ export class NominaRepository {
         return nomina;
     }
 
-    async updateIfIngresoOrDescuentoChange(idNomina: string) {
+    updateIfIngresoOrDescuentoChange = async (idNomina: string) => {
         console.log("tiene un descuento o un ingreso")
         const nomina = await Nomina.findById(idNomina);
         let des = { ...nomina?.descuentos }

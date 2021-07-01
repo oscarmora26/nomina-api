@@ -1,5 +1,6 @@
 import express, { Application } from 'express';
 import cors from 'cors';
+import swaggerUi from  'swagger-ui-express'
 import { PORT } from './config/properties';
 import EmployeeRouter from './routes/employee.router';
 import CompaniesRouter from './routes/companies.router';
@@ -10,6 +11,7 @@ import AuthRouter from './routes/auth.router';
 
 import AuthMiddleware from './middlewares/auth.middleware'
 
+import { swaggerDocs } from './config/swagger-doc'
 class Server {
 
     public app: Application
@@ -23,6 +25,7 @@ class Server {
     config() {
         this.app.use(cors());
         this.app.use(express.json());
+        this.app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
         this.app.use(AuthMiddleware);
     }
 

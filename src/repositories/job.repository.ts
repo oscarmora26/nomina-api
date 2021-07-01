@@ -8,7 +8,7 @@ export class JobRepository extends BaseRepository<IJob>{
         super(Job);
     }  
     
-    async getJobByDepartment (idDepartment: string) {
+    getJobByDepartment = async (idDepartment: string) => {
         const jobList = await Job.find({idDepartment})
         return jobList;
     }

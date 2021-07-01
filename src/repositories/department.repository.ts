@@ -9,7 +9,7 @@ export class DepartmentRepository extends BaseRepository<IDepartment>{
         super(Department);
     }  
     
-    async getDepartmentByCompanies(idCompanies: string) {
+    getDepartmentByCompanies = async (idCompanies: string) => {
         const departmentList = await Department.find({idCompanies});        
         return departmentList;
     }

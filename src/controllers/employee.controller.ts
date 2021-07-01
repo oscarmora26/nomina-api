@@ -5,20 +5,22 @@ import { BaseController } from './base.controller';
 
 export class EmployeeController extends BaseController {
 
+    repo: EmployeeRepository;
+
     constructor(){
         super(new EmployeeRepository)
+        this.repo = <EmployeeRepository> this._repository
     }
 
-    async update (req: Request, res: Response) {
+    update = async (req: Request, res: Response) => {
 
         try {
-            const repo = new EmployeeRepository();
-
-            const _employee = await repo.getOne(req.params.id);
+           
+            const _employee = await this.repo.getOne(req.params.id);
     
             if (!_employee) res.status(404).json({ ok: false, msg: "Employee not found" });
     
-            const employeeModify = await repo.update(req.params.id, req.body);
+            const employeeModify = await this.repo.update(req.params.id, req.body);
     
             res.status(200).json({ ok: true, data: employeeModify });
     

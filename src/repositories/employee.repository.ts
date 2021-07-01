@@ -10,13 +10,12 @@ export class EmployeeRepository extends BaseRepository<IEmployee>{
         super(Employee)
     }
 
-    async update(id: string, doc: {}) {
+    update = async (id: string, doc: {}) => {
         const employee = await Employee.updateOne({ _id: id }, { $set: doc })
         return employee;
     }
 
-    async findByCredentials (email: string, password: string) {
-        console.log(email, password)
+    findByCredentials = async (email: string, password: string) => {
         const employee = await Employee.findOne({ email});
         
         if(!employee) throw new Error('Invalid login credentials');
@@ -24,7 +23,7 @@ export class EmployeeRepository extends BaseRepository<IEmployee>{
         const isPasswordMatch = await bcrypt.compare(password, employee.password);
     
         if(!isPasswordMatch) throw new Error('Invalid login credentials' );
-
+        
         return employee;
     }
     

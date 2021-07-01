@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import chalk from 'chalk';
 import { DbUri } from './properties';
 
-mongoose.connect(DbUri, {
+mongoose.connect(DbUri!, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,

@@ -48,7 +48,7 @@ const employeeSchema: Schema<IEmployee> = new Schema({
         numberHome: { type: String }
     },
     informationBank: {
-        Bank: { type: String },
+        bank: { type: String },
         bankAccountType: { type: String, enum: ['ahorro', 'corriente'] },
         accountNumber: { type: String }
     },

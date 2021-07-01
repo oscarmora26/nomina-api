@@ -3,12 +3,17 @@ import { NominaRepository } from '../repositories/nomina.repository';
 
 export class NominaController {
 
-    async getAll (req: Request, res: Response) {
+    repo: NominaRepository;
+
+    constructor(){
+        this.repo = new NominaRepository();
+    }
+
+    getAll = async (req: Request, res: Response) => {
 
         try {
-            const repo = new NominaRepository();
-
-            const nominaList = await repo.getAll();
+            
+            const nominaList = await this.repo.getAll();
 
             res.status(200).json({ ok: true, data: nominaList });
 
@@ -18,12 +23,10 @@ export class NominaController {
         }
     }
 
-    async getOne (req: Request, res: Response) {
+    getOne = async (req: Request, res: Response) => {
 
         try {
-            const repo = new NominaRepository();
-
-            const nomina = await repo.getOne(req.params.id);
+            const nomina = await this.repo.getOne(req.params.id);
 
             if (!nomina) res.status(404).json({ ok: false, msg: "Entity not found" });
 
@@ -35,12 +38,10 @@ export class NominaController {
         }
     }
 
-    async getByCompanies (req:Request, res: Response) {
+    getByCompanies = async (req:Request, res: Response) => {
 
         try {
-            const repo = new NominaRepository();
-
-            const nominaList = await repo.getByCompanies(req.params.idCompanies);
+            const nominaList = await this.repo.getByCompanies(req.params.idCompanies);
 
             if (!nominaList) res.status(404).json({ ok: false, msg: "Entity not found" });
 
@@ -52,12 +53,10 @@ export class NominaController {
         }
     }
 
-    async generateNomina (req: Request, res: Response) {
+    generateNomina = async (req: Request, res: Response) => {
 
         try {
-            const repo = new NominaRepository();
-
-            const nominaList = await repo.generateNomina(req.params.idCompanies);
+            const nominaList = await this.repo.generateNomina(req.params.idCompanies);
 
             if (nominaList)
                 res.status(200).json({ ok: true});
@@ -70,12 +69,10 @@ export class NominaController {
         }
     }
 
-    async update (req: Request, res: Response) {
+    update = async (req: Request, res: Response) => {
 
         try {
-            const repo = new NominaRepository();
-
-            const nomina = await repo.update(req.params.id, req.body);
+            const nomina = await this.repo.update(req.params.id, req.body);
             res.status(200).json({ ok: true, data: nomina });
 
         } catch (error) {

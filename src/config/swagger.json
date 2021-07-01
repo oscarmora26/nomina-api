@@ -1,0 +1,1167 @@
+{
+  "swaggerDefinition": {
+    "swagger": "2.0",
+    "info": {
+      "description": "This is a api nomina",
+      "version": "1.0.0",
+      "title": "Swagger Api Nomina",
+      "termsOfService": "http://swagger.io/terms/",
+      "contact": {
+        "email": "oscar.rander@outlook.com"
+      },
+      "license": {
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      }
+    },
+    "basePath": "/api/v1/",
+    "tags": [{
+        "name": "auth",
+        "description": "Everything about your Auth"
+      },
+      {
+        "name": "employee",
+        "description": "Everything about your Employee"
+      },
+      {
+        "name": "companies",
+        "description": "Everything about your Companies"
+      },
+      {
+        "name": "department",
+        "description": "Everything about your Department"
+      },
+      {
+        "name": "job",
+        "description": "Everything about your Job"
+      }
+    ],
+    "schemes": [
+      "https",
+      "http"
+    ],
+    "paths": {
+      "/auth/loginAdmin": {
+        "post": {
+          "tags": [
+            "auth"
+          ],
+          "summary": "Log in a user",
+          "description": "",
+          "operationId": "loginAdmin",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Auth"
+            }
+          }],
+          "responses": {
+            "201": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/AuthSuccessResponse"
+              }
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        }
+      },
+      "/employee": {
+        "get": {
+          "tags": [
+            "employee"
+          ],
+          "summary": "Finds all employee",
+          "description": "",
+          "operationId": "getAllEmployee",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/EmployeeAllSuccessResponse"
+              }
+            },
+            "400": {
+              "description": "Invalid status value"
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        },
+        "post": {
+          "tags": [
+            "employee"
+          ],
+          "summary": "Add a new employee to the store",
+          "description": "",
+          "operationId": "addEmployee",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "Employee object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          }],
+          "responses": {
+            "201": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/EmployeeOneSuccessResponse"
+              }
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        }
+      },
+      "/employee/{id}": {
+        "get": {
+          "tags": [
+            "employee"
+          ],
+          "summary": "Finds one employee",
+          "description": "",
+          "operationId": "getOneEmployee",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [{
+            "name": "id",
+            "in": "path",
+            "description": "Id of employee to return",
+            "required": true,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/EmployeeOneSuccessResponse"
+              }
+            },
+            "404": {
+              "description": "Employee not found"
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        },
+        "patch": {
+          "tags": [
+            "employee"
+          ],
+          "summary": "Patch one employee",
+          "description": "",
+          "operationId": "PatchOneEmployee",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [{
+              "name": "id",
+              "in": "path",
+              "description": "Id of employee to return",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Employee object that needs to be added to the store",
+              "required": false,
+              "schema": {
+                "$ref": "#/definitions/Employee"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/EmployeeOneSuccessResponse"
+              }
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        }
+      },
+      "/companies": {
+        "get": {
+          "tags": [
+            "companies"
+          ],
+          "summary": "Finds all companies",
+          "description": "",
+          "operationId": "getAllCompanies",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/CompaniesAllSuccessResponse"
+              }
+            },
+            "400": {
+              "description": "Invalid status value"
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        },
+        "post": {
+          "tags": [
+            "companies"
+          ],
+          "summary": "Add a new pet to the store",
+          "description": "",
+          "operationId": "addPet",
+          "consumes": [
+            "application/json",
+            "application/xml"
+          ],
+          "produces": [
+            "application/xml",
+            "application/json"
+          ],
+          "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "Pet object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Companies"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/CompaniesOneSuccessResponse"
+              }
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        }
+      },
+      "/companies/{id}": {
+        "get": {
+          "tags": [
+            "companies"
+          ],
+          "summary": "Finds one companies",
+          "description": "",
+          "operationId": "getOneCompanies",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [{
+            "name": "id",
+            "in": "path",
+            "description": "Id of companies to return",
+            "required": true,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/CompaniesOneSuccessResponse"
+              }
+            },
+            "404": {
+              "description": "Companies not found"
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        }
+      },
+      "/department": {
+        "get": {
+          "tags": [
+            "department"
+          ],
+          "summary": "Finds all companies",
+          "description": "",
+          "operationId": "getAllDepartment",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/DepartmentAllSuccessResponse"
+              }
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        },
+        "post": {
+          "tags": [
+            "department"
+          ],
+          "summary": "Add a new pet to the store",
+          "description": "",
+          "operationId": "addDepartment",
+          "consumes": [
+            "application/json",
+            "application/xml"
+          ],
+          "produces": [
+            "application/xml",
+            "application/json"
+          ],
+          "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "department object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Companies"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/DepartmentOneSuccessResponse"
+              }
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        }
+      },
+      "/department/{id}": {
+        "get": {
+          "tags": [
+            "department"
+          ],
+          "summary": "Finds one companies",
+          "description": "",
+          "operationId": "getOneDepartment",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [{
+            "name": "id",
+            "in": "path",
+            "description": "Id of department to return",
+            "required": true,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/DepartmentOneSuccessResponse"
+              }
+            },
+            "404": {
+              "description": "Department not found"
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        }
+      },
+      "/department/companies/{id}": {
+        "get": {
+          "tags": [
+            "department"
+          ],
+          "summary": "Finds department by companies",
+          "description": "",
+          "operationId": "getDepartmentByCompanies",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [{
+            "name": "id",
+            "in": "path",
+            "description": "Id of companies to return department by companies",
+            "required": true,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/DepartmentAllSuccessResponse"
+              }
+            },
+            "404": {
+              "description": "Department not found"
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        }
+      },
+      "/job": {
+        "get": {
+          "tags": [
+            "job"
+          ],
+          "summary": "Finds all job",
+          "description": "",
+          "operationId": "getAlljob",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/JobAllSuccessResponse"
+              }
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        },
+        "post": {
+          "tags": [
+            "job"
+          ],
+          "summary": "Add a new job",
+          "description": "",
+          "operationId": "addJob",
+          "consumes": [
+            "application/json",
+            "application/xml"
+          ],
+          "produces": [
+            "application/xml",
+            "application/json"
+          ],
+          "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "job object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Job"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/JobOneSuccessResponse"
+              }
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        }
+      },
+      "/job/{id}": {
+        "get": {
+          "tags": [
+            "job"
+          ],
+          "summary": "Finds one job",
+          "description": "",
+          "operationId": "getOneJob",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [{
+            "name": "id",
+            "in": "path",
+            "description": "Id of job to return",
+            "required": true,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/JobOneSuccessResponse"
+              }
+            },
+            "404": {
+              "description": "Job not found"
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        }
+      },
+      "/job/department/{id}": {
+        "get": {
+          "tags": [
+            "job"
+          ],
+          "summary": "Finds one job",
+          "description": "",
+          "operationId": "getJobByDepartment",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [{
+            "name": "id",
+            "in": "path",
+            "description": "Id of department to return job by department",
+            "required": true,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/JobAllSuccessResponse"
+              }
+            },
+            "404": {
+              "description": "Job not found"
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        }
+      },
+      "/nomina": {
+        "get": {
+          "tags": [
+            "nomina"
+          ],
+          "summary": "Finds all nomina",
+          "description": "",
+          "operationId": "getAllNomina",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/NominaAllSuccessResponse"
+              }
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        }
+      },
+      "/nomina/{id}": {
+        "get": {
+          "tags": [
+            "nomina"
+          ],
+          "summary": "Finds one nomina",
+          "description": "",
+          "operationId": "getOneNomina",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [{
+            "name": "id",
+            "in": "path",
+            "description": "Id of nomina to return",
+            "required": true,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/NominaOneSuccessResponse"
+              }
+            },
+            "404": {
+              "description": "Nomina not found"
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        },
+        "patch": {
+          "tags": [
+            "nomina"
+          ],
+          "summary": "Patch one nomina",
+          "description": "",
+          "operationId": "pacthOneNomina",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [{
+              "name": "id",
+              "in": "path",
+              "description": "Id of nomina to return",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Nomina object that needs to be added to the store",
+              "required": false,
+              "schema": {
+                "$ref": "#/definitions/Nomina"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/NominaOneSuccessResponse"
+              }
+            },
+            "404": {
+              "description": "Nomins not found"
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        }
+      },
+      "/nomina/generateNomina/{idCompanies}": {
+        "post": {
+          "tags": [
+            "nomina"
+          ],
+          "summary": "Generate nomina",
+          "description": "",
+          "operationId": "generateNomina",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [{
+            "name": "idCompanies",
+            "in": "path",
+            "description": "Id of companies to generate nomina",
+            "required": true,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "successful operation"
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        }
+      },
+      "/nomina/companies/{idCompanies}": {
+        "get": {
+          "tags": [
+            "nomina"
+          ],
+          "summary": "get nomina by companies",
+          "description": "",
+          "operationId": "getNominaByCompanies",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [{
+            "name": "idCompanies",
+            "in": "path",
+            "description": "Id of compani to get nomina",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/NominaAllSuccessResponse"
+              }
+            },
+            "404": {
+              "description": "Nomina not found"
+            }
+          },
+          "security": [{
+            "JWT": []
+          }]
+        }
+      }
+    },
+    "securityDefinitions": {
+      "JWT": {
+        "description": "",
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    },
+    "definitions": {
+      "Auth": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "Employee": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "cedula": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "m",
+              "f"
+            ]
+          },
+          "admissionDate": {
+            "type": "string"
+          },
+          "driversLicense": {
+            "type": "string"
+          },
+          "phones": {
+            "type": "object",
+            "properties": {
+              "homePhone": {
+                "type": "string"
+              },
+              "cellPhone": {
+                "type": "string"
+              }
+            }
+          },
+          "adress": {
+            "type": "object",
+            "properties": {
+              "city": {
+                "type": "string"
+              },
+              "street": {
+                "type": "string"
+              },
+              "numberHome": {
+                "type": "string"
+              }
+            }
+          },
+          "informationBank": {
+            "type": "object",
+            "properties": {
+              "bank": {
+                "type": "string"
+              },
+              "bankAccountType": {
+                "type": "string",
+                "enum": [
+                  "ahorro",
+                  "corriente"
+                ]
+              },
+              "accountNumber": {
+                "type": "string"
+              }
+            }
+          },
+          "salary": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "hasArs": {
+            "type": "boolean"
+          },
+          "hasAfp": {
+            "type": "boolean"
+          },
+          "hasIrs": {
+            "type": "boolean"
+          },
+          "rol": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "regular"
+            ]
+          },
+          "idCompanies": {
+            "type": "string"
+          },
+          "idDepartment": {
+            "type": "string"
+          },
+          "idJob": {
+            "type": "string"
+          }
+        }
+      },
+      "Companies": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "Department": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "idCompanies": {
+            "type": "string"
+          }
+        }
+      },
+      "Job": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "idDepartment": {
+            "type": "string"
+          }
+        }
+      },
+      "Nomina": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "idEmployee": {
+            "type": "string"
+          },
+          "idCompanies": {
+            "type": "string"
+          },
+          "salario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "salqincenal": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ingresos": {
+            "type": "object",
+            "properties": {
+              "incentivo": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "comision": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "bonificacion": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "combustible": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "horasExtras": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "reembolsos": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "vacaciones": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          },
+          "totalIngresos": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "descuentos": {
+            "type": "object",
+            "properties": {
+              "isr": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "afp": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "ars": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "ahorroCoop": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "prestamoCoop": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "uniformes": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "diasNoLab": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          },
+          "totalDescuentos": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalNeto": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "periodo": {
+            "type": "object",
+            "properties": {
+              "year": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "month": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "quincena": {
+                "type": "integer",
+                "format": "int32",
+                "enum": [
+                  1,
+                  2
+                ]
+              }
+            }
+          }
+        }
+      },
+      "AuthSuccessResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          }
+        }
+      },
+      "EmployeeAllSuccessResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Employee"
+            }
+          }
+        }
+      },
+      "EmployeeOneSuccessResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/definitions/Employee"
+          }
+        }
+      },
+      "CompaniesAllSuccessResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Companies"
+            }
+          }
+        }
+      },
+      "CompaniesOneSuccessResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/definitions/Companies"
+          }
+        }
+      },
+      "DepartmentAllSuccessResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Department"
+            }
+          }
+        }
+      },
+      "DepartmentOneSuccessResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/definitions/Department"
+          }
+        }
+      },
+      "JobAllSuccessResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Job"
+            }
+          }
+        }
+      },
+      "JobOneSuccessResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/definitions/Job"
+          }
+        }
+      },
+      "NominaAllSuccessResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Nomina"
+            }
+          }
+        }
+      },
+      "NominaOneSuccessResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/definitions/Nomina"
+          }
+        }
+      }
+    },
+    "externalDocs": {
+      "description": "Find out more about Swagger",
+      "url": "http://swagger.io"
+    }
+  },
+  "apis": ["src/config/swagger-doc.js"]
+}
